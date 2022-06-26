@@ -1,0 +1,36 @@
+<% title="Passengers" %>
+<%- include("layout/header") %>
+
+<div class="col-md-12">
+    <h4>OX-Depp Air welcomes you!;list of passengers on board</h4>
+
+    <table border="1"> 
+        <tr align="center">
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Destination</th>
+            <th>Passport</th>
+            <th>Flight Schedule</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr align="center">
+            <% passengers.forEach(function(passenger) { %>
+            <td> <%-passenger.fname +" - "+ passenger.lname%> </td>
+            <td> <%-passenger.sex%> </td>
+            <td> <%-passenger.email%> </td>
+            <td> <%-passenger.mobile%> </td>
+            <td> <%-passenger.destination%> </td>
+            <td> <img src="data:public/upload/<%=passenger.passport.contentType%>;base64,<%- passenger.passport.data.toString('base64')%>" 
+                alt="profile" width="200" height="200"> </td>
+             <td> <%-passenger.date_registered%> </td>
+            <td> <a href="/edit/<%-passenger._id%>">Edit</a>  </td>
+            <td> <a href="/delete/<%-passenger._id%>">Delete</a> </td>
+        </tr>
+        <% }) %>    
+    </table>
+    </div>
+    
+<%- include("layout/footer") %>
